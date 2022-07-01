@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_edit">
+
+    <fragment
+        android:id="@+id/navigation_edit"
+        android:name="com.nikameru.skinjsoneditor.ui.edit.EditFragment"
+        android:label="@string/title_edit"
+        tools:layout="@layout/fragment_edit" />
+
+    <fragment
+        android:id="@+id/navigation_help"
+        android:name="com.nikameru.skinjsoneditor.ui.help.HelpFragment"
+        android:label="@string/title_help"
+        tools:layout="@layout/fragment_help" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.nikameru.skinjsoneditor.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

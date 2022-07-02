@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_create_new"
+        android:icon="@drawable/ic_add_48"
+        android:title="@string/action_create_new"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_open_file"
+        android:icon="@drawable/ic_folder_48"
+        android:title="@string/action_open_file"
+        app:showAsAction="never" />
+
+</menu>

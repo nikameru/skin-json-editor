@@ -4,13 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.112" />
+        <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/drawable/ic_add_24.xml" value="0.112" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/drawable/ic_launcher_background.xml" value="0.112" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.2" />
-        <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/layout/activity_main.xml" value="0.152" />
-        <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/layout/fragment_edit.xml" value="0.5400192864030858" />
+        <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/layout/fragment_edit.xml" value="0.2129115006412997" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/layout/fragment_help.xml" value="0.5400192864030858" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/layout/fragment_settings.xml" value="0.5400192864030858" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/menu/bottom_nav_menu.xml" value="0.9876543209876543" />
+        <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/menu/project_appbar_menu.xml" value="0.21205643437366395" />
       </map>
     </option>
   </component>

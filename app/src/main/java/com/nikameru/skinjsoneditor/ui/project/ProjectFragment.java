@@ -1,40 +1,39 @@
 package com.nikameru.skinjsoneditor.ui.project;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.nikameru.skinjsoneditor.R;
+import com.nikameru.skinjsoneditor.databinding.FragmentProjectBinding;
 
 public class ProjectFragment extends Fragment {
-
-    private ProjectViewModel mViewModel;
 
     public static ProjectFragment newInstance() {
         return new ProjectFragment();
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    private FragmentProjectBinding binding;
 
-        return inflater.inflate(R.layout.fragment_project, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        ProjectViewModel projectViewModel = new ViewModelProvider(this,
+                (ViewModelProvider.Factory) new ViewModelProvider.NewInstanceFactory()).get(ProjectViewModel.class);
+
+        binding = FragmentProjectBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+        final TextView textView = binding.textProject;
+        projectViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        return root;
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ProjectViewModel.class);
-        // TODO: Use the ViewModel
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

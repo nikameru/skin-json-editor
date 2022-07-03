@@ -17,14 +17,14 @@ public class HelpFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HelpViewModel homeViewModel =
+        HelpViewModel helpViewModel =
                 new ViewModelProvider(this, (ViewModelProvider.Factory) new ViewModelProvider.NewInstanceFactory()).get(HelpViewModel.class);
 
         binding = FragmentHelpBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textHelp;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        helpViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

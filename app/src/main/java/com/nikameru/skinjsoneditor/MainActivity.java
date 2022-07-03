@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,13 +61,11 @@ public class MainActivity extends AppCompatActivity {
         int menuItemId = menuItem.getItemId();
 
         if (menuItemId == R.id.action_create_new) {
-            Toast.makeText(this, "мяу", Toast.LENGTH_SHORT).show();
-
             Intent menuIntent = new Intent(this, CreateProjectActivity.class);
             startActivity(menuIntent);
             return true;
         } else if (menuItemId == R.id.action_open_file) {
-            Toast.makeText(this, "гав", Toast.LENGTH_SHORT).show();
+            // TODO: open an existing JSON file
             return true;
         } else {
             return super.onOptionsItemSelected(menuItem);

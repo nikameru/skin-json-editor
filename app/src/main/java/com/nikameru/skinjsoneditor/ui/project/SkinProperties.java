@@ -14,6 +14,7 @@ public class SkinProperties {
     private boolean forceOverride = true;
 
     // Layout category
+    // TODO: backbutton
     private ButtonLayout BackButton = new ButtonLayout(126, 1, 100);
     private ButtonLayout ModsButton = new ButtonLayout(126, 1, 100);
     private ButtonLayout OptionsButton = new ButtonLayout(126, 1, 100);
@@ -47,8 +48,15 @@ public class SkinProperties {
     }
 
     // Constructor
-    public SkinProperties() {
-
+    public SkinProperties(String menuItemDefaultColor, String MenuItemDefaultTextColor,
+                          String MenuItemSelectedTextColor, String MenuItemVersionsDefaultColor,
+                          String[] colors, boolean forceOverride, ButtonLayout BackButton,
+                          ButtonLayout ModsButton, ButtonLayout OptionsButton, ButtonLayout RandomButton,
+                          boolean useNewLayout, float sliderBodyBaseAlpha, String sliderBodyColor,
+                          String sliderBorderColor, boolean sliderFollowComboColor, float sliderHintAlpha,
+                          String sliderHintColor, boolean sliderHintEnable, int sliderHintShowMinLength,
+                          float sliderHintWidth, boolean disableKiai, boolean limitComboTextLength) {
+        // TODO: constructor
     }
 
     // Gets and sets

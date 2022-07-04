@@ -15,6 +15,7 @@ public class SettingsFragment extends Fragment {
 
     private FragmentSettingsBinding binding;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         SettingsViewModel settingsViewModel =

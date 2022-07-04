@@ -5,20 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.preference.PreferenceFragmentCompat;
+
+import com.nikameru.skinjsoneditor.R;
 import com.nikameru.skinjsoneditor.databinding.FragmentProjectBinding;
 
-public class ProjectFragment extends Fragment {
-
-    public static ProjectFragment newInstance() {
-        return new ProjectFragment();
-    }
+public class ProjectFragment extends PreferenceFragmentCompat {
 
     private FragmentProjectBinding binding;
 
+    /*@Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ProjectViewModel projectViewModel = new ViewModelProvider(this,
                 (ViewModelProvider.Factory) new ViewModelProvider.NewInstanceFactory()).get(ProjectViewModel.class);
@@ -29,11 +28,21 @@ public class ProjectFragment extends Fragment {
         final TextView textView = binding.textProject;
         projectViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
-    }
+    }*/
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R
+                .xml.skin_preferences, rootKey);
+    }
+
+    public static ProjectFragment newInstance() {
+        return new ProjectFragment();
     }
 }

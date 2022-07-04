@@ -15,6 +15,7 @@ public class EditFragment extends Fragment {
 
     private FragmentEditBinding binding;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         EditViewModel editViewModel =
                 new ViewModelProvider(this, (ViewModelProvider.Factory) new ViewModelProvider.NewInstanceFactory()).get(EditViewModel.class);

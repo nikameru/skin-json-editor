@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.preference.PreferenceFragment;
 
 import com.nikameru.skinjsoneditor.ui.project.ProjectFragment;
 

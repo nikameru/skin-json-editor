@@ -15,6 +15,7 @@ public class HelpFragment extends Fragment {
 
     private FragmentHelpBinding binding;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HelpViewModel helpViewModel =

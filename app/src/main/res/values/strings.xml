@@ -1,4 +1,5 @@
 <resources>
+
     <!-- app -->
 
     <string name="app_name">Skin JSON Editor</string>
@@ -19,6 +20,8 @@
 
     <!-- skin.json related strings -->
 
+    <!-- color category -->
+
     <string name="menuItemDefaultColor_title">menuItemDefaultColor</string>
     <string name="menuItemDefaultColor_summary">Default color</string>
 
@@ -30,4 +33,32 @@
 
     <string name="menuItemVersionsDefaultColor_title">menuItemVersionsDefaultColor</string>
     <string name="menuItemVersionsDefaultColor_summary">Difficulties color</string>
+
+    <!-- combo color category -->
+
+    <string name="firstComboColor_title">Combo color 1</string>
+    <string name="secondComboColor_title">Combo color 2</string>
+    <string name="thirdComboColor_title">Combo color 3</string>
+    <string name="fourthComboColor_title">Combo color 4</string>
+
+    <string name="forceOverride_title">forceOverride</string>
+    <string name="forceOverride_summary">If true, beatmap combo colors won\'t be used</string>
+
+    <!-- layout category -->
+
+    <string name="backButton_title">backButton</string>
+    <string name="backButton_summary">Back button settings</string>
+
+    <string name="backButtonHeight_title">h</string>
+    <string name="backButtonHeight_summary">Back button height</string>
+    <string name="backButtonWidth_title">w</string>
+    <string name="backButtonWidth_summary">Back button width</string>
+    <string name="backButtonScale_title">scaleWhenHold</string>
+
+    <!-- slider category -->
+
+    <!-- utils category -->
+
+
+
 </resources>

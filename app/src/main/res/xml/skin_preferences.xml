@@ -3,7 +3,9 @@
     xmlns:android="https://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="Color category">
+    <PreferenceCategory
+        app:title="\n\n\nColor category"
+        app:iconSpaceReserved="false">
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
             android:defaultValue="@color/menuItemDefaultColor"
@@ -33,10 +35,54 @@
             app:summary="@string/menuItemVersionsDefaultColor_summary"
             app:iconSpaceReserved="false" />
 
-        <!--<SwitchPreferenceCompat
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Combo color category"
+        app:iconSpaceReserved="false">
+
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
+            android:defaultValue="@color/menuItemDefaultColor"
+            android:key="firstComboColorPreference"
+            app:title="@string/firstComboColor_title"
+            app:iconSpaceReserved="false" />
+
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
+            android:defaultValue="@color/menuItemDefaultTextColor"
+            android:key="secondComboColorPreference"
+            app:title="@string/secondComboColor_title"
+            app:iconSpaceReserved="false" />
+
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
+            android:defaultValue="@color/menuItemSelectedTextColor"
+            android:key="thirdComboColorPreference"
+            app:title="@string/thirdComboColor_title"
+            app:iconSpaceReserved="false" />
+
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
+            android:defaultValue="@color/menuItemVersionsDefaultColor"
+            android:key="fourthComboColorPreference"
+            app:title="@string/fourthComboColor_title"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
             app:key="forceOverridePreference"
-            app:title="Enable message notifications"
-            app:iconSpaceReserved="false" />-->
+            app:title="@string/forceOverride_title"
+            app:summary="@string/forceOverride_summary"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Layout"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            app:key="backButtonPreference"
+            app:title="@string/backButton_title"
+            app:summary="@string/backButton_summary"
+            app:fragment="com.nikameru.skinjsoneditor.ui.project.ProjectBackButtonFragment"
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
 

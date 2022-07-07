@@ -6,6 +6,7 @@
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.112" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/drawable/ic_add_24.xml" value="0.112" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/drawable/ic_add_48.xml" value="0.112" />
+        <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/drawable/ic_folder_48.xml" value="0.1155" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/drawable/ic_launcher_background.xml" value="0.112" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/drawable/ic_save_36.xml" value="0.112" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/drawable/ic_save_48.xml" value="0.112" />
@@ -16,11 +17,13 @@
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/layout/fragment_edit.xml" value="0.2129115006412997" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/layout/fragment_help.xml" value="0.5400192864030858" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/layout/fragment_project.xml" value="0.17443351859769132" />
+        <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/layout/fragment_project_back_button.xml" value="0.14151346729371525" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/layout/fragment_settings.xml" value="0.5400192864030858" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/menu/bottom_nav_menu.xml" value="0.9876543209876543" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/menu/edit_toolbar_menu.xml" value="0.2129115006412997" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/menu/project_appbar_menu.xml" value="0.21205643437366395" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/menu/project_toolbar_menu.xml" value="0.2129115006412997" />
+        <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/xml/back_button_preferences.xml" value="0.21205643437366395" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/xml/project_preference_screen.xml" value="0.2129115006412997" />
         <entry key="..\:/Users/nikar/AndroidStudioProjects/SkinJSONEditor/app/src/main/res/xml/skin_preferences.xml" value="0.17443351859769132" />
       </map>

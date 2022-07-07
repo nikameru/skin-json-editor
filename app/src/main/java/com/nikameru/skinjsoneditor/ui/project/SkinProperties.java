@@ -48,15 +48,8 @@ public class SkinProperties {
     }
 
     // Constructor
-    public SkinProperties(String menuItemDefaultColor, String MenuItemDefaultTextColor,
-                          String MenuItemSelectedTextColor, String MenuItemVersionsDefaultColor,
-                          String[] colors, boolean forceOverride, ButtonLayout BackButton,
-                          ButtonLayout ModsButton, ButtonLayout OptionsButton, ButtonLayout RandomButton,
-                          boolean useNewLayout, float sliderBodyBaseAlpha, String sliderBodyColor,
-                          String sliderBorderColor, boolean sliderFollowComboColor, float sliderHintAlpha,
-                          String sliderHintColor, boolean sliderHintEnable, int sliderHintShowMinLength,
-                          float sliderHintWidth, boolean disableKiai, boolean limitComboTextLength) {
-        // TODO: constructor
+    public SkinProperties() {
+
     }
 
     // Gets and sets

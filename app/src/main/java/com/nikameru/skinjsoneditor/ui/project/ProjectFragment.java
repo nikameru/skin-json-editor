@@ -1,13 +1,8 @@
 package com.nikameru.skinjsoneditor.ui.project;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.nikameru.skinjsoneditor.R;
@@ -38,8 +33,7 @@ public class ProjectFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R
-                .xml.skin_preferences, rootKey);
+        setPreferencesFromResource(R.xml.skin_preferences, rootKey);
     }
 
     public static ProjectFragment newInstance() {

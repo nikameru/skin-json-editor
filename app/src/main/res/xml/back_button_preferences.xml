@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:title="\n\n\nBack button"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            app:key="backButtonHeightPreference"
+            app:title="@string/backButtonHeight_title"
+            app:summary="@string/backButtonHeight_summary"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            app:key="backButtonWidthPreference"
+            app:title="@string/backButtonWidth_title"
+            app:summary="@string/backButtonWidth_summary"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            app:key="backButtonScalePreference"
+            app:title="@string/backButtonScale_title"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

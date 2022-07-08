@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-    xmlns:android="https://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="https://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
@@ -8,29 +7,29 @@
         app:iconSpaceReserved="false">
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
-            android:defaultValue="@color/menuItemDefaultColor"
-            android:key="menuItemDefaultColorPreference"
+            app:defaultValue="@color/menuItemDefaultColor"
+            app:key="menuItemDefaultColorPreference"
             app:title="@string/menuItemDefaultColor_title"
             app:summary="@string/menuItemDefaultColor_summary"
             app:iconSpaceReserved="false" />
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
-            android:defaultValue="@color/menuItemDefaultTextColor"
-            android:key="menuItemDefaultTextColorPreference"
+            app:defaultValue="@color/menuItemDefaultTextColor"
+            app:key="menuItemDefaultTextColorPreference"
             app:title="@string/menuItemDefaultTextColor_title"
             app:summary="@string/menuItemDefaultTextColor_summary"
             app:iconSpaceReserved="false" />
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
-            android:defaultValue="@color/menuItemSelectedTextColor"
-            android:key="menuItemSelectedTextColorPreference"
+            app:defaultValue="@color/menuItemSelectedTextColor"
+            app:key="menuItemSelectedTextColorPreference"
             app:title="@string/menuItemSelectedTextColor_title"
             app:summary="@string/menuItemSelectedTextColor_summary"
             app:iconSpaceReserved="false" />
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
-            android:defaultValue="@color/menuItemVersionsDefaultColor"
-            android:key="menuItemVersionsDefaultColorPreference"
+            app:defaultValue="@color/menuItemVersionsDefaultColor"
+            app:key="menuItemVersionsDefaultColorPreference"
             app:title="@string/menuItemVersionsDefaultColor_title"
             app:summary="@string/menuItemVersionsDefaultColor_summary"
             app:iconSpaceReserved="false" />

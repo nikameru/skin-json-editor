@@ -15,26 +15,27 @@ public class SkinProperties {
 
     // Layout category
     // TODO: backbutton
-    private ButtonLayout BackButton = new ButtonLayout(126, 1, 100);
-    private ButtonLayout ModsButton = new ButtonLayout(126, 1, 100);
-    private ButtonLayout OptionsButton = new ButtonLayout(126, 1, 100);
-    private ButtonLayout RandomButton = new ButtonLayout(126, 1, 100);
+    private HashMap<String, Object> BackButton = new HashMap<String, Object>();
+    private HashMap<String, Object> ModsButton = new HashMap<String, Object>();
+    private HashMap<String, Object> OptionsButton = new HashMap<String, Object>();
+    private HashMap<String, Object> RandomButton = new HashMap<String, Object>();
+
     private boolean useNewLayout = true;
 
     // Slider category
-    private float sliderBodyBaseAlpha;
-    private String sliderBodyColor;
-    private String sliderBorderColor;
-    private boolean sliderFollowComboColor;
-    private float sliderHintAlpha;
-    private String sliderHintColor;
-    private boolean sliderHintEnable;
-    private int sliderHintShowMinLength;
-    private float sliderHintWidth;
+    private float sliderBodyBaseAlpha = 0.4f;
+    private String sliderBodyColor = "#444444";
+    private String sliderBorderColor = "#E4E4E4";
+    private boolean sliderFollowComboColor = false;
+    private float sliderHintAlpha = 0.8f;
+    private String sliderHintColor = "#E4E4E4";
+    private boolean sliderHintEnable = false;
+    private int sliderHintShowMinLength = 200;
+    private float sliderHintWidth = 3.5f;
 
     // Utils category
-    private boolean disableKiai;
-    private boolean limitComboTextLength;
+    private boolean disableKiai = true;
+    private boolean limitComboTextLength = true;
 
     // ButtonLayout class
     static class ButtonLayout {
@@ -101,11 +102,11 @@ public class SkinProperties {
         this.forceOverride = forceOverride;
     }
 
-    public ButtonLayout getBackButton() {
+    public HashMap<String, Object> getBackButton() {
         return BackButton;
     }
 
-    public void setBackButton(ButtonLayout backButton) {
+    public void setBackButton(HashMap<String, Object> backButton) {
         BackButton = backButton;
     }
 

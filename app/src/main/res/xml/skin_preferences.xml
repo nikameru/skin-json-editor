@@ -42,25 +42,25 @@
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
             android:defaultValue="@color/menuItemDefaultColor"
-            android:key="firstComboColorPreference"
+            android:key="1ComboColorPreference"
             app:title="@string/firstComboColor_title"
             app:iconSpaceReserved="false" />
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
             android:defaultValue="@color/menuItemDefaultTextColor"
-            android:key="secondComboColorPreference"
+            android:key="2ComboColorPreference"
             app:title="@string/secondComboColor_title"
             app:iconSpaceReserved="false" />
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
             android:defaultValue="@color/menuItemSelectedTextColor"
-            android:key="thirdComboColorPreference"
+            android:key="3ComboColorPreference"
             app:title="@string/thirdComboColor_title"
             app:iconSpaceReserved="false" />
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
             android:defaultValue="@color/menuItemVersionsDefaultColor"
-            android:key="fourthComboColorPreference"
+            android:key="4ComboColorPreference"
             app:title="@string/fourthComboColor_title"
             app:iconSpaceReserved="false" />
 

@@ -53,12 +53,64 @@
     <string name="backButtonHeight_summary">Back button height</string>
     <string name="backButtonWidth_title">w</string>
     <string name="backButtonWidth_summary">Back button width</string>
-    <string name="backButtonScale_title">scaleWhenHold</string>
+    <string name="backButtonScaleWhenHold_title">scaleWhenHold</string>
+
+    <string name="modsButton_title">modsButton</string>
+    <string name="modsButton_summary">Mods button settings</string>
+
+    <string name="modsButtonHeight_title">h</string>
+    <string name="modsButtonHeight_summary">Mods button height</string>
+    <string name="modsButtonWidth_title">w</string>
+    <string name="modsButtonWidth_summary">Mods button width</string>
+    <string name="modsButtonScale_title">scale</string>
+
+    <string name="optionsButton_title">optionsButton</string>
+    <string name="optionsButton_summary">Options button settings</string>
+
+    <string name="optionsButtonHeight_title">h</string>
+    <string name="optionsButtonHeight_summary">Options button height</string>
+    <string name="optionsButtonWidth_title">w</string>
+    <string name="optionsButtonWidth_summary">Options button width</string>
+    <string name="optionsButtonScale_title">scale</string>
+
+    <string name="randomButton_title">randomButton</string>
+    <string name="randomButton_summary">Random button settings</string>
+
+    <string name="randomButtonHeight_title">h</string>
+    <string name="randomButtonHeight_summary">Random button height</string>
+    <string name="randomButtonWidth_title">w</string>
+    <string name="randomButtonWidth_summary">Random button width</string>
+    <string name="randomButtonScale_title">scale</string>
+
+    <string name="useNewLayout_title">useNewLayout</string>
+    <string name="useNewLayout_summary">If false, layout category won\'t work in-game</string>
 
     <!-- slider category -->
 
+    <string name="sliderBodyBaseAlpha_title">sliderBodyBaseAlpha</string>
+    <string name="sliderBodyBaseAlpha_summary">Opacity of the slider</string>
+    <string name="sliderBodyColor_title">sliderBodyColor</string>
+    <string name="sliderBodyColor_summary">Color of the slider</string>
+    <string name="sliderBorderColor_title">sliderBorderColor</string>
+    <string name="sliderBorderColor_summary">Color of the slider border</string>
+    <string name="sliderFollowComboColor_title">sliderFollowComboColor</string>
+    <string name="sliderFollowComboColor_summary">If true, slider will use combo color instead of sliderBodyColor</string>
+    <string name="sliderHintAlpha_title">sliderHintAlpha</string>
+    <string name="sliderHintAlpha_summary">Opacity of the slider hint</string>
+    <string name="sliderHintColor_title">sliderHintColor</string>
+    <string name="sliderHintColor_summary">Color of the slider hint</string>
+    <string name="sliderHintEnable_title">sliderHintEnable</string>
+    <string name="sliderHintEnable_summary">Whether to show slider hint or not</string>
+    <string name="sliderHintShowMinLength_title">sliderHintShowMinLength</string>
+    <string name="sliderHintShowMinLength_summary">The minimum length required for the slider hint to generate</string>
+    <string name="sliderHintWidth_title">sliderHintShowMinLength</string>
+    <string name="sliderHintWidth_summary">Width of the slider hint</string>
+
     <!-- utils category -->
 
-
+    <string name="disableKiai_title">disableKiai</string>
+    <string name="disableKiai_summary">If true, circles will flash to the rhythm of the music</string>
+    <string name="limitComboTextLength_title">limitComboTextLength</string>
+    <string name="limitComboTextLength_summary">If true, combo numbers in hitcircles will always consist of 1 digit</string>
 
 </resources>

@@ -37,17 +37,6 @@ public class SkinProperties {
     private boolean disableKiai = true;
     private boolean limitComboTextLength = true;
 
-    // ButtonLayout class
-    static class ButtonLayout {
-        HashMap<String, Object> buttonLayout = new HashMap<String, Object>();
-
-        public ButtonLayout(int height, int scale, int width) {
-            buttonLayout.put("h", height);
-            buttonLayout.put("scale", scale);
-            buttonLayout.put("w", width);
-        }
-    }
-
     // Constructor
     public SkinProperties() {
 
@@ -110,27 +99,27 @@ public class SkinProperties {
         BackButton = backButton;
     }
 
-    public ButtonLayout getModsButton() {
+    public HashMap<String, Object> getModsButton() {
         return ModsButton;
     }
 
-    public void setModsButton(ButtonLayout modsButton) {
+    public void setModsButton(HashMap<String, Object> modsButton) {
         ModsButton = modsButton;
     }
 
-    public ButtonLayout getOptionsButton() {
+    public HashMap<String, Object> getOptionsButton() {
         return OptionsButton;
     }
 
-    public void setOptionsButton(ButtonLayout optionsButton) {
+    public void setOptionsButton(HashMap<String, Object> optionsButton) {
         OptionsButton = optionsButton;
     }
 
-    public ButtonLayout getRandomButton() {
+    public HashMap<String, Object> getRandomButton() {
         return RandomButton;
     }
 
-    public void setRandomButton(ButtonLayout randomButton) {
+    public void setRandomButton(HashMap<String, Object> randomButton) {
         RandomButton = randomButton;
     }
 

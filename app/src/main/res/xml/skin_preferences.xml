@@ -83,6 +83,116 @@
             app:fragment="com.nikameru.skinjsoneditor.ui.project.ProjectBackButtonFragment"
             app:iconSpaceReserved="false" />
 
+        <Preference
+            app:key="modsButtonPreference"
+            app:title="@string/modsButton_title"
+            app:summary="@string/modsButton_summary"
+            app:fragment="com.nikameru.skinjsoneditor.ui.project.ProjectModsButtonFragment"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            app:key="optionsButtonPreference"
+            app:title="@string/optionsButton_title"
+            app:summary="@string/optionsButton_summary"
+            app:fragment="com.nikameru.skinjsoneditor.ui.project.ProjectOptionsButtonFragment"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            app:key="randomButtonPreference"
+            app:title="@string/randomButton_title"
+            app:summary="@string/randomButton_summary"
+            app:fragment="com.nikameru.skinjsoneditor.ui.project.ProjectRandomButtonFragment"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            app:key="useNewLayoutPreference"
+            app:title="@string/useNewLayout_title"
+            app:summary="@string/useNewLayout_summary"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Slider category"
+        app:iconSpaceReserved="false">
+
+        <SeekBarPreference
+            app:key="sliderBodyBaseAlphaPreference"
+            app:iconSpaceReserved="false"
+            app:title="@string/sliderBodyBaseAlpha_title"
+            app:summary="@string/sliderBodyBaseAlpha_summary"
+            app:showSeekBarValue="true" />
+
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
+            android:defaultValue="@color/menuItemDefaultColor"
+            android:key="sliderBodyColorPreference"
+            app:title="@string/sliderBodyColor_title"
+            app:summary="@string/sliderBodyColor_summary"
+            app:iconSpaceReserved="false" />
+
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
+            android:defaultValue="@color/menuItemDefaultColor"
+            android:key="sliderBorderColorPreference"
+            app:title="@string/sliderBorderColor_title"
+            app:summary="@string/sliderBorderColor_summary"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            app:key="sliderFollowComboColorPreference"
+            app:title="@string/sliderFollowComboColor_title"
+            app:summary="@string/sliderFollowComboColor_summary"
+            app:iconSpaceReserved="false" />
+
+        <SeekBarPreference
+            app:key="sliderHintAlphaPreference"
+            app:title="@string/sliderHintAlpha_title"
+            app:summary="@string/sliderHintAlpha_summary"
+            app:iconSpaceReserved="false"
+            app:showSeekBarValue="true" />
+
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
+            android:defaultValue="@color/menuItemDefaultColor"
+            android:key="sliderHintColorPreference"
+            app:title="@string/sliderHintColor_title"
+            app:summary="@string/sliderHintColor_summary"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            app:key="sliderHintEnablePreference"
+            app:title="@string/sliderHintEnable_title"
+            app:summary="@string/sliderHintEnable_summary"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            app:key="sliderHintShowMinLengthPreference"
+            app:title="@string/sliderHintShowMinLength_title"
+            app:summary="@string/sliderHintShowMinLength_summary"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            app:key="sliderHintWidthPreference"
+            app:title="@string/sliderHintWidth_title"
+            app:summary="@string/sliderHintWidth_summary"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Utils category"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreferenceCompat
+            app:key="disableKiaiPreference"
+            app:title="@string/disableKiai_title"
+            app:summary="@string/disableKiai_summary"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            app:key="limitComboTextLengthPreference"
+            app:title="@string/limitComboTextLength_title"
+            app:summary="@string/limitComboTextLength_summary"
+            app:iconSpaceReserved="false" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

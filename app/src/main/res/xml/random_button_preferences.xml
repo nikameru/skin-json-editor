@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:title="\n\n\nRandom button"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            app:key="randomButtonHeightPreference"
+            app:title="@string/randomButtonHeight_title"
+            app:summary="@string/randomButtonHeight_summary"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            app:key="randomButtonWidthPreference"
+            app:title="@string/randomButtonWidth_title"
+            app:summary="@string/randomButtonWidth_summary"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            app:key="randomButtonScalePreference"
+            app:title="@string/randomButtonScale_title"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

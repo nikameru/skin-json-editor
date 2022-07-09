@@ -16,12 +16,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.gson.GsonBuilder;
+import com.google.gson.Gson;
 import com.nikameru.skinjsoneditor.ui.project.ProjectFragment;
 import com.nikameru.skinjsoneditor.ui.project.SkinProperties;
 
-import java.util.Locale;
 import java.util.Objects;
-import com.google.gson.Gson;
 
 public class CreateProjectActivity extends AppCompatActivity implements
         PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {

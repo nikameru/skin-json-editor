@@ -19,7 +19,7 @@
 
         <SwitchPreferenceCompat
             app:key="backButtonScalePreference"
-            app:title="@string/backButtonScale_title"
+            app:title="@string/backButtonScaleWhenHold_title"
             app:iconSpaceReserved="false" />
 
     </PreferenceCategory>

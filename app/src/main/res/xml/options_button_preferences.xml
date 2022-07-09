@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:title="\n\n\nOptions button"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            app:key="optionsButtonHeightPreference"
+            app:title="@string/optionsButtonHeight_title"
+            app:summary="@string/optionsButtonHeight_summary"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            app:key="optionsButtonWidthPreference"
+            app:title="@string/optionsButtonWidth_title"
+            app:summary="@string/optionsButtonWidth_summary"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            app:key="optionsButtonScalePreference"
+            app:title="@string/optionsButtonScale_title"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

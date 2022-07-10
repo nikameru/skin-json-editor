@@ -159,7 +159,7 @@ public class CreateProjectActivity extends AppCompatActivity implements
         );
 
         slider.setSliderHintWidth(
-                Integer.parseInt(preferences.getString("sliderHintWidthPreference", "4"))
+                Float.parseFloat(preferences.getString("sliderHintWidthPreference", "4"))
         );
 
         // utils category
@@ -190,9 +190,8 @@ public class CreateProjectActivity extends AppCompatActivity implements
 
     private String getFilepath(String filepath) {
 
-        return "/storage/emulated/0/" + String.valueOf(filepath)
-                     .substring(String.valueOf(filepath).indexOf("primary%3A") + 10)
-                     .replace("%2F", "/") + "/skin.json";
+        return "/storage/emulated/0/" + filepath.substring(filepath.indexOf("primary%3A") + 10)
+                .replace("%2F", "/") + "/skin.json";
     }
 
     private void saveFile(String json, Uri filepath) {

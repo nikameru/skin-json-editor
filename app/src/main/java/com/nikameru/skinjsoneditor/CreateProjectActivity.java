@@ -253,8 +253,6 @@ public class CreateProjectActivity extends AppCompatActivity implements
             return true;
         } else if (menuItemId == R.id.action_project_save_as) {
 
-            // TODO: save as
-
             return true;
         } else {
             return super.onOptionsItemSelected(menuItem);

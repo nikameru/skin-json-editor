@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(menuIntent);
             return true;
         } else if (menuItemId == R.id.action_open_file) {
-            // TODO: import an existing JSON file
+
             return true;
         } else {
             return super.onOptionsItemSelected(menuItem);

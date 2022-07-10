@@ -35,13 +35,13 @@ public class CreateProjectActivity extends AppCompatActivity implements
         String preferenceColor = Integer.toHexString(
                 preferences.getInt(preferenceKey, 171717)
         );
-        Log.i("converted hex", preferenceColor);
 
         return "#" + preferenceColor.substring(2).toUpperCase();
     }
 
     private HashMap<String, Object> getButtonLayout
             (@NonNull SharedPreferences preferences, HashMap<String, Object> buttonSettings, String buttonName) {
+
         buttonSettings.put("h", Integer.parseInt(
                 preferences.getString(buttonName + "ButtonHeightPreference", "200"))
         );
@@ -101,7 +101,6 @@ public class CreateProjectActivity extends AppCompatActivity implements
         String[] comboColors = {"", "", "", ""};
 
         for (int i = 0; i < 4; i++) {
-            Log.i("index", (i + 1) + "ComboColorPreference");
             comboColors[i] = getConvertedHexFromPreference(preferences, (i + 1) + "ComboColorPreference");
         }
 
@@ -128,7 +127,7 @@ public class CreateProjectActivity extends AppCompatActivity implements
         // slider category
 
         slider.setSliderBodyBaseAlpha(
-                preferences.getInt("sliderBodyBaseAlphaPreference", 1)
+                (float) preferences.getInt("sliderBodyBaseAlphaPreference", 100) / 100
         );
 
         slider.setSliderBodyColor(
@@ -160,7 +159,7 @@ public class CreateProjectActivity extends AppCompatActivity implements
         );
 
         slider.setSliderHintWidth(
-                Integer.parseInt(preferences.getString("sliderHintWidthPreference", "3.5"))
+                Integer.parseInt(preferences.getString("sliderHintWidthPreference", "4"))
         );
 
         // utils category
@@ -254,7 +253,7 @@ public class CreateProjectActivity extends AppCompatActivity implements
 
             return true;
         } else if (menuItemId == R.id.action_project_save_as) {
-            
+
             // TODO: save as
 
             return true;
@@ -269,14 +268,20 @@ public class CreateProjectActivity extends AppCompatActivity implements
 
         if (requestCode == 1) {
             assert data != null;
-            Log.i("Test", "Result URI " + data.getData());
 
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-            String configuredSkinProperties = getSkinPropertiesJSON(sharedPreferences);
 
-            Log.i("json", configuredSkinProperties);
+            try {
+                String configuredSkinProperties = getSkinPropertiesJSON(sharedPreferences);
 
-            saveFile(configuredSkinProperties, data.getData());
+                saveFile(configuredSkinProperties, data.getData());
+            } catch (Exception e) {
+                e.printStackTrace();
+
+                Toast.makeText(
+                        this, "Error! You've inserted parameters with wrong data types!", Toast.LENGTH_LONG
+                ).show();
+            }
         }
     }
 

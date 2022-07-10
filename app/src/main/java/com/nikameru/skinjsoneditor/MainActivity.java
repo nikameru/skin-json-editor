@@ -2,7 +2,6 @@ package com.nikameru.skinjsoneditor;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(menuIntent);
             return true;
         } else if (menuItemId == R.id.action_open_file) {
-            // TODO: open an existing JSON file
+            // TODO: import an existing JSON file
             return true;
         } else {
             return super.onOptionsItemSelected(menuItem);

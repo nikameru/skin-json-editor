@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         app:title="\n\n\nOptions button"
@@ -9,17 +11,20 @@
             app:key="optionsButtonHeightPreference"
             app:title="@string/optionsButtonHeight_title"
             app:summary="@string/optionsButtonHeight_summary"
+            android:inputType="number"
             app:iconSpaceReserved="false" />
 
         <EditTextPreference
             app:key="optionsButtonWidthPreference"
             app:title="@string/optionsButtonWidth_title"
             app:summary="@string/optionsButtonWidth_summary"
+            android:inputType="number"
             app:iconSpaceReserved="false" />
 
-        <SwitchPreferenceCompat
+        <EditTextPreference
             app:key="optionsButtonScalePreference"
             app:title="@string/optionsButtonScale_title"
+            android:inputType="number"
             app:iconSpaceReserved="false" />
 
     </PreferenceCategory>

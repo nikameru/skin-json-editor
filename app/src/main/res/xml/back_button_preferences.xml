@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         app:title="\n\n\nBack button"
@@ -9,12 +11,14 @@
             app:key="backButtonHeightPreference"
             app:title="@string/backButtonHeight_title"
             app:summary="@string/backButtonHeight_summary"
+            android:inputType="number"
             app:iconSpaceReserved="false" />
 
         <EditTextPreference
             app:key="backButtonWidthPreference"
             app:title="@string/backButtonWidth_title"
             app:summary="@string/backButtonWidth_summary"
+            android:inputType="number"
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat

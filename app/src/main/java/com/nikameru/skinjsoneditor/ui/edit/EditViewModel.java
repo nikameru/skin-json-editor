@@ -10,7 +10,7 @@ public class EditViewModel extends ViewModel {
 
     public EditViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is edit fragment");
+        mText.setValue("Nothing here...");
     }
 
     public LiveData<String> getText() {

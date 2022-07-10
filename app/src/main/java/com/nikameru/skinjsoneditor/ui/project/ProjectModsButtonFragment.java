@@ -22,19 +22,6 @@ public class ProjectModsButtonFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.mods_button_preferences, rootKey);
-
-        EditTextPreference heightPreference = findPreference("modsButtonHeightPreference");
-        EditTextPreference widthPreference = findPreference("modsButtonWidthPreference");
-
-        if (heightPreference != null && widthPreference != null) {
-            heightPreference.setOnBindEditTextListener(
-                    editText -> editText.setInputType(InputType.TYPE_CLASS_NUMBER)
-            );
-
-            widthPreference.setOnBindEditTextListener(
-                    editText -> editText.setInputType(InputType.TYPE_CLASS_NUMBER)
-            );
-        }
     }
 
     public static ProjectModsButtonFragment newInstance() {

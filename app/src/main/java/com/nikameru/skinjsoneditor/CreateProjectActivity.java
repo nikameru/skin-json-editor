@@ -12,21 +12,18 @@ import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.Gson;
 import com.nikameru.skinjsoneditor.ui.project.ProjectFragment;
 import com.nikameru.skinjsoneditor.ui.project.SkinProperties;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Objects;
@@ -35,10 +32,36 @@ public class CreateProjectActivity extends AppCompatActivity implements
         PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
     private String getConvertedHexFromPreference(@NonNull SharedPreferences preferences, String preferenceKey) {
-        String preferenceColor = Integer.toHexString(preferences.getInt(preferenceKey, 171717));
+        String preferenceColor = Integer.toHexString(
+                preferences.getInt(preferenceKey, 171717)
+        );
         Log.i("converted hex", preferenceColor);
 
         return "#" + preferenceColor.substring(2).toUpperCase();
+    }
+
+    private HashMap<String, Object> getButtonLayout
+            (@NonNull SharedPreferences preferences, HashMap<String, Object> buttonSettings, String buttonName) {
+        buttonSettings.put("h", Integer.parseInt(
+                preferences.getString(buttonName + "ButtonHeightPreference", "200"))
+        );
+
+        if (Objects.equals(buttonName, "back")) {
+            buttonSettings.put(
+                    "scaleWhenHold", preferences.getBoolean("backButtonScalePreference", false)
+            );
+        } else {
+            buttonSettings.put(
+                    "scale", Integer.parseInt(preferences.getString
+                            (buttonName + "ButtonScalePreference", "1"))
+            );
+        }
+
+        buttonSettings.put("w", Integer.parseInt(
+                preferences.getString(buttonName + "ButtonWidthPreference", "100"))
+        );
+
+        return buttonSettings;
     }
 
     private String getSkinPropertiesJSON(@NonNull SharedPreferences preferences) {
@@ -78,41 +101,85 @@ public class CreateProjectActivity extends AppCompatActivity implements
         String[] comboColors = {"", "", "", ""};
 
         for (int i = 0; i < 4; i++) {
-            comboColors[i] = getConvertedHexFromPreference(preferences, (i + 1) + "comboColorPreference");
+            Log.i("index", (i + 1) + "ComboColorPreference");
+            comboColors[i] = getConvertedHexFromPreference(preferences, (i + 1) + "ComboColorPreference");
         }
 
         comboColor.setColors(comboColors);
+
         comboColor.setForceOverride(preferences.getBoolean("forceOverridePreference", false));
 
         // layout category
 
-        HashMap<String, Object> backButtonSettings = new HashMap<String, Object>();
+        HashMap<String, Object> backButtonSettings = new HashMap<>();
+        layout.setBackButton(getButtonLayout(preferences, backButtonSettings, "back"));
 
-        backButtonSettings.put("h", preferences.getInt("backButtonHeightPreference", 200));
-        backButtonSettings.put("scaleWhenHold", preferences.getBoolean("backButonScalePreference", false));
-        backButtonSettings.put("w", preferences.getInt("backButtonWidthPreference", 100));
+        HashMap<String, Object> modsButtonSettings = new HashMap<>();
+        layout.setModsButton(getButtonLayout(preferences, modsButtonSettings, "mods"));
 
-        layout.setBackButton(backButtonSettings);
+        HashMap<String, Object> optionsButtonSettings = new HashMap<>();
+        layout.setOptionsButton(getButtonLayout(preferences, optionsButtonSettings, "options"));
 
-        HashMap<String, Object> modsButtonSettings = new HashMap<String, Object>();
+        HashMap<String, Object> randomButtonSettings = new HashMap<>();
+        layout.setRandomButton(getButtonLayout(preferences, randomButtonSettings, "random"));
 
-        modsButtonSettings.put("h", preferences.getInt("modsButtonHeightPreference", 200));
-        modsButtonSettings.put("scale", preferences.getBoolean("modsButonScalePreference", false));
-        modsButtonSettings.put("w", preferences.getInt("modsButtonWidthPreference", 100));
-
-        layout.setModsButton(modsButtonSettings);
-
-        HashMap<String, Object> optionsButtonSettings = new HashMap<String, Object>();
-
-        modsButtonSettings.put("h", preferences.getInt("modsButtonHeightPreference", 200));
-        modsButtonSettings.put("scale", preferences.getBoolean("modsButonScalePreference", false));
-        modsButtonSettings.put("w", preferences.getInt("modsButtonWidthPreference", 100));
-
-        layout.setModsButton(modsButtonSettings);
+        layout.setUseNewLayout(preferences.getBoolean("useNewLayoutPreference", true));
 
         // slider category
 
+        slider.setSliderBodyBaseAlpha(
+                preferences.getInt("sliderBodyBaseAlphaPreference", 1)
+        );
+
+        slider.setSliderBodyColor(
+                getConvertedHexFromPreference(preferences, "sliderBodyColorPreference")
+        );
+
+        slider.setSliderBorderColor(
+                getConvertedHexFromPreference(preferences, "sliderBorderColorPreference")
+        );
+
+        slider.setSliderFollowComboColor(
+                preferences.getBoolean("sliderFollowComboColor", false)
+        );
+
+        slider.setSliderHintAlpha(
+                (float) preferences.getInt("sliderHintAlphaPreference", 100) / 100
+        );
+
+        slider.setSliderHintColor(
+                getConvertedHexFromPreference(preferences, "sliderHintColorPreference")
+        );
+
+        slider.setSliderHintEnable(
+                preferences.getBoolean("sliderHintEnablePreference", false)
+        );
+
+        slider.setSliderHintShowMinLength(
+                Integer.parseInt(preferences.getString("sliderHintShowMinLengthPreference", "200"))
+        );
+
+        slider.setSliderHintWidth(
+                Integer.parseInt(preferences.getString("sliderHintWidthPreference", "3.5"))
+        );
+
         // utils category
+
+        utils.setDisableKiai(
+                preferences.getBoolean("disableKiaiPreference", true)
+        );
+
+        utils.setLimitComboTextLength(
+                preferences.getBoolean("limitComboTextLength", true)
+        );
+
+        // sets
+
+        skinProperties.setColor(color);
+        skinProperties.setComboColor(comboColor);
+        skinProperties.setLayout(layout);
+        skinProperties.setSlider(slider);
+        skinProperties.setUtils(utils);
 
         // converting to JSON
 
@@ -122,14 +189,24 @@ public class CreateProjectActivity extends AppCompatActivity implements
         return gson.toJson(skinProperties);
     }
 
-    private void saveFile(String json, String filepath) {
+    private String getFilepath(String filepath) {
 
-        File directory = new File(Environment.getExternalStorageDirectory() + filepath);
+        return "/storage/emulated/0/" + String.valueOf(filepath)
+                     .substring(String.valueOf(filepath).indexOf("primary%3A") + 10)
+                     .replace("%2F", "/") + "/skin.json";
+    }
+
+    private void saveFile(String json, Uri filepath) {
 
         try {
-            FileWriter fileWriter = new FileWriter("/storage/emulated/0/" + filepath + "/skin.json");
+            String stringFilepath = getFilepath(String.valueOf(filepath));
+
+            FileWriter fileWriter = new FileWriter(stringFilepath);
+
             fileWriter.write(json);
             fileWriter.close();
+
+            Toast.makeText(this, "Saved to " + stringFilepath + "!", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -196,7 +273,7 @@ public class CreateProjectActivity extends AppCompatActivity implements
 
             Log.i("json", configuredSkinProperties);
 
-            saveFile(configuredSkinProperties, data.getDataString());
+            saveFile(configuredSkinProperties, data.getData());
         }
     }
 

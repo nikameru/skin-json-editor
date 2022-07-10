@@ -41,26 +41,26 @@
         app:iconSpaceReserved="false">
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
-            android:defaultValue="@color/menuItemDefaultColor"
-            android:key="1ComboColorPreference"
+            app:defaultValue="@color/menuItemDefaultColor"
+            app:key="1ComboColorPreference"
             app:title="@string/firstComboColor_title"
             app:iconSpaceReserved="false" />
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
-            android:defaultValue="@color/menuItemDefaultTextColor"
-            android:key="2ComboColorPreference"
+            app:defaultValue="@color/menuItemDefaultTextColor"
+            app:key="2ComboColorPreference"
             app:title="@string/secondComboColor_title"
             app:iconSpaceReserved="false" />
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
-            android:defaultValue="@color/menuItemSelectedTextColor"
-            android:key="3ComboColorPreference"
+            app:defaultValue="@color/menuItemSelectedTextColor"
+            app:key="3ComboColorPreference"
             app:title="@string/thirdComboColor_title"
             app:iconSpaceReserved="false" />
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
-            android:defaultValue="@color/menuItemVersionsDefaultColor"
-            android:key="4ComboColorPreference"
+            app:defaultValue="@color/menuItemVersionsDefaultColor"
+            app:key="4ComboColorPreference"
             app:title="@string/fourthComboColor_title"
             app:iconSpaceReserved="false" />
 
@@ -124,15 +124,15 @@
             app:showSeekBarValue="true" />
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
-            android:defaultValue="@color/menuItemDefaultColor"
-            android:key="sliderBodyColorPreference"
+            app:defaultValue="@color/menuItemDefaultColor"
+            app:key="sliderBodyColorPreference"
             app:title="@string/sliderBodyColor_title"
             app:summary="@string/sliderBodyColor_summary"
             app:iconSpaceReserved="false" />
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
-            android:defaultValue="@color/menuItemDefaultColor"
-            android:key="sliderBorderColorPreference"
+            app:defaultValue="@color/menuItemDefaultColor"
+            app:key="sliderBorderColorPreference"
             app:title="@string/sliderBorderColor_title"
             app:summary="@string/sliderBorderColor_summary"
             app:iconSpaceReserved="false" />
@@ -151,8 +151,8 @@
             app:showSeekBarValue="true" />
 
         <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
-            android:defaultValue="@color/menuItemDefaultColor"
-            android:key="sliderHintColorPreference"
+            app:defaultValue="@color/menuItemDefaultColor"
+            app:key="sliderHintColorPreference"
             app:title="@string/sliderHintColor_title"
             app:summary="@string/sliderHintColor_summary"
             app:iconSpaceReserved="false" />
@@ -167,9 +167,11 @@
             app:key="sliderHintShowMinLengthPreference"
             app:title="@string/sliderHintShowMinLength_title"
             app:summary="@string/sliderHintShowMinLength_summary"
+            android:inputType="number"
             app:iconSpaceReserved="false" />
 
         <EditTextPreference
+            android:inputType="number"
             app:key="sliderHintWidthPreference"
             app:title="@string/sliderHintWidth_title"
             app:summary="@string/sliderHintWidth_summary"

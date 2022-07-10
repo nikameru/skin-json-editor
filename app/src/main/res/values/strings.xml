@@ -103,7 +103,7 @@
     <string name="sliderHintEnable_summary">Whether to show slider hint or not</string>
     <string name="sliderHintShowMinLength_title">sliderHintShowMinLength</string>
     <string name="sliderHintShowMinLength_summary">The minimum length required for the slider hint to generate</string>
-    <string name="sliderHintWidth_title">sliderHintShowMinLength</string>
+    <string name="sliderHintWidth_title">sliderHintWidth</string>
     <string name="sliderHintWidth_summary">Width of the slider hint</string>
 
     <!-- utils category -->

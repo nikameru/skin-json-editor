@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         app:title="\n\n\nRandom button"
@@ -9,17 +11,20 @@
             app:key="randomButtonHeightPreference"
             app:title="@string/randomButtonHeight_title"
             app:summary="@string/randomButtonHeight_summary"
+            android:inputType="number"
             app:iconSpaceReserved="false" />
 
         <EditTextPreference
             app:key="randomButtonWidthPreference"
             app:title="@string/randomButtonWidth_title"
             app:summary="@string/randomButtonWidth_summary"
+            android:inputType="number"
             app:iconSpaceReserved="false" />
 
-        <SwitchPreferenceCompat
+        <EditTextPreference
             app:key="randomButtonScalePreference"
             app:title="@string/randomButtonScale_title"
+            android:inputType="number"
             app:iconSpaceReserved="false" />
 
     </PreferenceCategory>

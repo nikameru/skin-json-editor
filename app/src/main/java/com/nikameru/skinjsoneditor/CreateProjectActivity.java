@@ -14,7 +14,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -70,11 +69,11 @@ public class CreateProjectActivity extends AppCompatActivity implements
 
         SkinProperties skinProperties = new SkinProperties();
 
-        SkinProperties.Color color = new SkinProperties.Color();
-        SkinProperties.ComboColor comboColor = new SkinProperties.ComboColor();
-        SkinProperties.Layout layout = new SkinProperties.Layout();
-        SkinProperties.Slider slider = new SkinProperties.Slider();
-        SkinProperties.Utils utils = new SkinProperties.Utils();
+        SkinProperties.ColorCategory color = new SkinProperties.ColorCategory();
+        SkinProperties.ComboColorCategory comboColor = new SkinProperties.ComboColorCategory();
+        SkinProperties.LayoutCategory layout = new SkinProperties.LayoutCategory();
+        SkinProperties.SliderCategory slider = new SkinProperties.SliderCategory();
+        SkinProperties.UtilsCategory utils = new SkinProperties.UtilsCategory();
 
         // configuring skinProperties
 
@@ -174,11 +173,11 @@ public class CreateProjectActivity extends AppCompatActivity implements
 
         // sets
 
-        skinProperties.setColor(color);
-        skinProperties.setComboColor(comboColor);
-        skinProperties.setLayout(layout);
-        skinProperties.setSlider(slider);
-        skinProperties.setUtils(utils);
+        skinProperties.setColorCategory(color);
+        skinProperties.setComboColorCategory(comboColor);
+        skinProperties.setLayoutCategory(layout);
+        skinProperties.setSliderCategory(slider);
+        skinProperties.setUtilsCategory(utils);
 
         // converting to JSON
 

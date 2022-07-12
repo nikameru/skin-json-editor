@@ -4,15 +4,15 @@ import java.util.HashMap;
 
 public class SkinProperties {
 
-    private Color color = new Color();
-    private ComboColor comboColor = new ComboColor();
-    private Layout layout = new Layout();
-    private Slider slider = new Slider();
-    private Utils utils = new Utils();
+    private ColorCategory Color = new ColorCategory();
+    private ComboColorCategory ComboColor = new ComboColorCategory();
+    private LayoutCategory Layout = new LayoutCategory();
+    private SliderCategory Slider = new SliderCategory();
+    private UtilsCategory Utils = new UtilsCategory();
 
     // Color category
 
-    public static class Color {
+    public static class ColorCategory {
         private String MenuItemDefaultColor = "#F8D59D";
         private String MenuItemDefaultTextColor = "#FFFFFF";
         private String MenuItemSelectedTextColor = "F4EADA";
@@ -50,14 +50,14 @@ public class SkinProperties {
             MenuItemVersionsDefaultColor = menuItemVersionsDefaultColor;
         }
 
-        public Color() {
+        public ColorCategory() {
 
         }
     }
 
     // ComboColor category
 
-    public static class ComboColor {
+    public static class ComboColorCategory {
         private String[] colors = {"#9A1537", "#50954C", "#FBDB92", "#2E9DF6"};
         private boolean forceOverride = true;
 
@@ -77,18 +77,18 @@ public class SkinProperties {
             this.forceOverride = forceOverride;
         }
 
-        public ComboColor() {
+        public ComboColorCategory() {
 
         }
     }
 
     // Layout category
 
-    public static class Layout {
-        private HashMap<String, Object> BackButton = new HashMap<String, Object>();
-        private HashMap<String, Object> ModsButton = new HashMap<String, Object>();
-        private HashMap<String, Object> OptionsButton = new HashMap<String, Object>();
-        private HashMap<String, Object> RandomButton = new HashMap<String, Object>();
+    public static class LayoutCategory {
+        private HashMap<String, Object> BackButton = new HashMap<>();
+        private HashMap<String, Object> ModsButton = new HashMap<>();
+        private HashMap<String, Object> OptionsButton = new HashMap<>();
+        private HashMap<String, Object> RandomButton = new HashMap<>();
 
         private boolean useNewLayout = true;
 
@@ -132,14 +132,14 @@ public class SkinProperties {
             this.useNewLayout = useNewLayout;
         }
 
-        public Layout() {
+        public LayoutCategory() {
 
         }
     }
 
     // Slider category
 
-    public static class Slider {
+    public static class SliderCategory {
         private float sliderBodyBaseAlpha = 0.4f;
         private String sliderBodyColor = "#444444";
         private String sliderBorderColor = "#E4E4E4";
@@ -222,14 +222,14 @@ public class SkinProperties {
             this.sliderHintWidth = sliderHintWidth;
         }
 
-        public Slider() {
+        public SliderCategory() {
 
         }
     }
 
     // Utils category
 
-    public static class Utils {
+    public static class UtilsCategory {
         private boolean disableKiai = true;
         private boolean limitComboTextLength = true;
 
@@ -249,54 +249,54 @@ public class SkinProperties {
             this.limitComboTextLength = limitComboTextLength;
         }
 
-        public Utils() {
+        public UtilsCategory() {
 
         }
+    }
+
+    public ColorCategory getColorCategory() {
+        return Color;
+    }
+
+    public void setColorCategory(ColorCategory color) {
+        this.Color = color;
+    }
+
+    public ComboColorCategory getComboColorCategory() {
+        return ComboColor;
+    }
+
+    public void setComboColorCategory(ComboColorCategory comboColor) {
+        this.ComboColor = comboColor;
+    }
+
+    public LayoutCategory getLayoutCategory() {
+        return Layout;
+    }
+
+    public void setLayoutCategory(LayoutCategory layout) {
+        this.Layout = layout;
+    }
+
+    public SliderCategory getSliderCategory() {
+        return Slider;
+    }
+
+    public void setSliderCategory(SliderCategory slider) {
+        this.Slider = slider;
+    }
+
+    public UtilsCategory getUtilsCategory() {
+        return Utils;
+    }
+
+    public void setUtilsCategory(UtilsCategory utils) {
+        this.Utils = utils;
     }
 
     // Constructor
 
     public SkinProperties() {
 
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public ComboColor getComboColor() {
-        return comboColor;
-    }
-
-    public void setComboColor(ComboColor comboColor) {
-        this.comboColor = comboColor;
-    }
-
-    public Layout getLayout() {
-        return layout;
-    }
-
-    public void setLayout(Layout layout) {
-        this.layout = layout;
-    }
-
-    public Slider getSlider() {
-        return slider;
-    }
-
-    public void setSlider(Slider slider) {
-        this.slider = slider;
-    }
-
-    public Utils getUtils() {
-        return utils;
-    }
-
-    public void setUtils(Utils utils) {
-        this.utils = utils;
     }
 }

@@ -112,5 +112,8 @@
     <string name="disableKiai_summary">If true, circles will flash to the rhythm of the music</string>
     <string name="limitComboTextLength_title">limitComboTextLength</string>
     <string name="limitComboTextLength_summary">If true, combo numbers in hitcircles will always consist of 1 digit</string>
+    <string name="title_activity_p">p</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 
 </resources>

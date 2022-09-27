@@ -1,15 +1,24 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
+
+    <style name="Theme.SkinJSONEditor.LaunchScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_foreground</item>
+        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="postSplashScreenTheme">@style/Theme.SkinJSONEditor</item>
+    </style>
+
     <style name="Theme.SkinJSONEditor" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/pink</item>
         <item name="colorPrimaryDark">@color/dark_pink</item>
         <item name="colorAccent">@color/pink_500</item>
     </style>
 
-    
-    <style name="Theme.LaunchScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/white</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_foreground</item>
-        <item name="windowSplashScreenAnimationDuration">300</item>
-        <item name="postSplashScreenTheme">@style/Theme.SkinJSONEditor</item>
+    <style name="Theme.SkinJSONEditor.LaunchScreen.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="Theme.SkinJSONEditor.LaunchScreen.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.SkinJSONEditor.LaunchScreen.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

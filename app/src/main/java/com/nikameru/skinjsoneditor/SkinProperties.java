@@ -1,4 +1,4 @@
-package com.nikameru.skinjsoneditor.ui.project;
+package com.nikameru.skinjsoneditor;
 
 import java.util.HashMap;
 

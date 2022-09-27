@@ -1,5 +1,15 @@
 package com.nikameru.skinjsoneditor;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -10,193 +20,68 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
-
-import com.google.gson.GsonBuilder;
-import com.google.gson.Gson;
+import com.amrdeveloper.codeview.CodeView;
 import com.nikameru.skinjsoneditor.ui.project.ProjectFragment;
-import com.nikameru.skinjsoneditor.ui.project.SkinProperties;
+import com.nikameru.skinjsoneditor.ui.project.ProjectPreviewFragment;
 
 import java.io.FileWriter;
-import java.util.HashMap;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class CreateProjectActivity extends AppCompatActivity implements
         PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
-    private String getConvertedHexFromPreference(@NonNull SharedPreferences preferences, String preferenceKey) {
-        String preferenceColor = Integer.toHexString(
-                preferences.getInt(preferenceKey, 171717)
-        );
+    final private static JSONAssembler assembler = new JSONAssembler();
+    final private static Pattern[] regexHighlighting = {
+            Pattern.compile("\"[0-9a-zA-Z#]+\""),   // strings
+            Pattern.compile("[^\"#:A-Z]+\\d[^\",}A-Z]+"),   // numbers
+            Pattern.compile("true|false")   // booleans
+    };
+    final private static int[] highlightingColors = {
+            Color.GREEN,
+            Color.CYAN,
+            Color.YELLOW
+    };
+    protected String previewJSON;
 
-        return "#" + preferenceColor.substring(2).toUpperCase();
+    public void showPreview(View view) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        previewJSON = assembler.getSkinPropertiesJSON(sharedPreferences);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.createProject, ProjectPreviewFragment.newInstance())
+                .commitNow();
+
+        setContentView(R.layout.fragment_project_preview);
+
+        CodeView preview = findViewById(R.id.previewTextView);
+
+        assert preview != null;
+        preview.setText(previewJSON);
+
+        for (int i = 0; i < regexHighlighting.length; i++) {
+            preview.addSyntaxPattern(regexHighlighting[i], highlightingColors[i]);
+        }
+
+        preview.reHighlightSyntax();
     }
 
-    private HashMap<String, Object> getButtonLayout
-            (@NonNull SharedPreferences preferences, HashMap<String, Object> buttonSettings, String buttonName) {
+    private String getFilepath(String uri) throws UnsupportedEncodingException {
+        final String filepath = URLDecoder.decode(uri, "utf-8");
 
-        buttonSettings.put("h", Integer.parseInt(
-                preferences.getString(buttonName + "ButtonHeightPreference", "200"))
-        );
-
-        if (Objects.equals(buttonName, "back")) {
-            buttonSettings.put(
-                    "scaleWhenHold", preferences.getBoolean("backButtonScalePreference", false)
-            );
+        if (!filepath.contains("primary:")) {
+            return "";   // storageId
         } else {
-            buttonSettings.put(
-                    "scale", Integer.parseInt(preferences.getString
-                            (buttonName + "ButtonScalePreference", "1"))
-            );
+            return "/storage/emulated/0/" + filepath.substring(filepath.indexOf("primary:") + 8) + "/skin.json";
         }
-
-        buttonSettings.put("w", Integer.parseInt(
-                preferences.getString(buttonName + "ButtonWidthPreference", "100"))
-        );
-
-        return buttonSettings;
-    }
-
-    private String getSkinPropertiesJSON(@NonNull SharedPreferences preferences) {
-
-        // instances creation
-
-        SkinProperties skinProperties = new SkinProperties();
-
-        SkinProperties.ColorCategory color = new SkinProperties.ColorCategory();
-        SkinProperties.ComboColorCategory comboColor = new SkinProperties.ComboColorCategory();
-        SkinProperties.LayoutCategory layout = new SkinProperties.LayoutCategory();
-        SkinProperties.SliderCategory slider = new SkinProperties.SliderCategory();
-        SkinProperties.UtilsCategory utils = new SkinProperties.UtilsCategory();
-
-        // configuring skinProperties
-
-        // color category
-
-        color.setMenuItemDefaultColor(
-                getConvertedHexFromPreference(preferences, "menuItemDefaultColorPreference")
-        );
-
-        color.setMenuItemDefaultTextColor(
-                getConvertedHexFromPreference(preferences, "menuItemDefaultTextColorPreference")
-        );
-
-        color.setMenuItemSelectedTextColor(
-                getConvertedHexFromPreference(preferences, "menuItemSelectedTextColorPreference")
-        );
-
-        color.setMenuItemVersionsDefaultColor(
-                getConvertedHexFromPreference(preferences, "menuItemVersionsDefaultColorPreference")
-        );
-
-        // combo color category
-
-        String[] comboColors = {"", "", "", ""};
-
-        for (int i = 0; i < 4; i++) {
-            comboColors[i] = getConvertedHexFromPreference(preferences, (i + 1) + "ComboColorPreference");
-        }
-
-        comboColor.setColors(comboColors);
-
-        comboColor.setForceOverride(preferences.getBoolean("forceOverridePreference", false));
-
-        // layout category
-
-        HashMap<String, Object> backButtonSettings = new HashMap<>();
-        layout.setBackButton(getButtonLayout(preferences, backButtonSettings, "back"));
-
-        HashMap<String, Object> modsButtonSettings = new HashMap<>();
-        layout.setModsButton(getButtonLayout(preferences, modsButtonSettings, "mods"));
-
-        HashMap<String, Object> optionsButtonSettings = new HashMap<>();
-        layout.setOptionsButton(getButtonLayout(preferences, optionsButtonSettings, "options"));
-
-        HashMap<String, Object> randomButtonSettings = new HashMap<>();
-        layout.setRandomButton(getButtonLayout(preferences, randomButtonSettings, "random"));
-
-        layout.setUseNewLayout(preferences.getBoolean("useNewLayoutPreference", true));
-
-        // slider category
-
-        slider.setSliderBodyBaseAlpha(
-                (float) preferences.getInt("sliderBodyBaseAlphaPreference", 100) / 100
-        );
-
-        slider.setSliderBodyColor(
-                getConvertedHexFromPreference(preferences, "sliderBodyColorPreference")
-        );
-
-        slider.setSliderBorderColor(
-                getConvertedHexFromPreference(preferences, "sliderBorderColorPreference")
-        );
-
-        slider.setSliderFollowComboColor(
-                preferences.getBoolean("sliderFollowComboColor", false)
-        );
-
-        slider.setSliderHintAlpha(
-                (float) preferences.getInt("sliderHintAlphaPreference", 100) / 100
-        );
-
-        slider.setSliderHintColor(
-                getConvertedHexFromPreference(preferences, "sliderHintColorPreference")
-        );
-
-        slider.setSliderHintEnable(
-                preferences.getBoolean("sliderHintEnablePreference", false)
-        );
-
-        slider.setSliderHintShowMinLength(
-                Integer.parseInt(preferences.getString("sliderHintShowMinLengthPreference", "200"))
-        );
-
-        slider.setSliderHintWidth(
-                Float.parseFloat(preferences.getString("sliderHintWidthPreference", "4"))
-        );
-
-        // utils category
-
-        utils.setDisableKiai(
-                preferences.getBoolean("disableKiaiPreference", true)
-        );
-
-        utils.setLimitComboTextLength(
-                preferences.getBoolean("limitComboTextLength", true)
-        );
-
-        // sets
-
-        skinProperties.setColorCategory(color);
-        skinProperties.setComboColorCategory(comboColor);
-        skinProperties.setLayoutCategory(layout);
-        skinProperties.setSliderCategory(slider);
-        skinProperties.setUtilsCategory(utils);
-
-        // converting to JSON
-
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        Gson gson = gsonBuilder.setPrettyPrinting().create();
-
-        return gson.toJson(skinProperties);
-    }
-
-    private String getFilepath(String filepath) {
-
-        return "/storage/emulated/0/" + filepath.substring(filepath.indexOf("primary%3A") + 10)
-                .replace("%2F", "/") + "/skin.json";
     }
 
     private void saveFile(String json, Uri filepath) {
-
         try {
-            String stringFilepath = getFilepath(String.valueOf(filepath));
+            final String stringFilepath = getFilepath(String.valueOf(filepath));
 
             FileWriter fileWriter = new FileWriter(stringFilepath);
 
@@ -251,7 +136,6 @@ public class CreateProjectActivity extends AppCompatActivity implements
 
             return true;
         } else if (menuItemId == R.id.action_project_save_as) {
-
             return true;
         } else {
             return super.onOptionsItemSelected(menuItem);
@@ -268,7 +152,7 @@ public class CreateProjectActivity extends AppCompatActivity implements
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
             try {
-                String configuredSkinProperties = getSkinPropertiesJSON(sharedPreferences);
+                final String configuredSkinProperties = assembler.getSkinPropertiesJSON(sharedPreferences);
 
                 saveFile(configuredSkinProperties, data.getData());
             } catch (Exception e) {

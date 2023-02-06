@@ -1,7 +1,12 @@
 package com.nikameru.skinjsoneditor;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.util.Log;
+import android.util.SparseIntArray;
+
 import androidx.annotation.NonNull;
+import androidx.preference.PreferenceManager;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,14 +14,10 @@ import com.google.gson.GsonBuilder;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class JSONAssembler {
+public class PreferencesConverter {
 
     private String getConvertedHexFromPreference(@NonNull SharedPreferences preferences, String preferenceKey) {
-        String preferenceColor = Integer.toHexString(
-                preferences.getInt(preferenceKey, 0)
-        );
-
-        return "#" + preferenceColor.substring(2).toUpperCase();
+        return String.format("#%06X", (0xFFFFFF & preferences.getInt(preferenceKey, 0)));
     }
 
     private HashMap<String, Object> getButtonLayout
@@ -44,7 +45,7 @@ public class JSONAssembler {
         return buttonSettings;
     }
 
-    protected String getSkinPropertiesJSON(@NonNull final SharedPreferences preferences) {
+    protected String getSkinPropertiesJson(@NonNull final SharedPreferences preferences) {
 
         // instances creation
 
@@ -166,5 +167,23 @@ public class JSONAssembler {
         Gson gson = gsonBuilder.setPrettyPrinting().create();
 
         return gson.toJson(skinProperties);
+    }
+
+    protected void setPreferencesFromJson(@NonNull String json, @NonNull SharedPreferences preferences) {
+
+        Gson gson = new Gson();
+        SkinProperties skinProperties = gson.fromJson(json, SkinProperties.class);
+
+        SkinProperties.ColorCategory color = skinProperties.getColorCategory();
+        SkinProperties.ComboColorCategory comboColor = skinProperties.getComboColorCategory();
+        SkinProperties.LayoutCategory layout = skinProperties.getLayoutCategory();
+        SkinProperties.SliderCategory slider = skinProperties.getSliderCategory();
+        SkinProperties.UtilsCategory utils = skinProperties.getUtilsCategory();
+
+        SharedPreferences.Editor preferencesEditor = preferences.edit();
+
+        preferencesEditor.putInt("menuItemDefaultColorPreference",
+                        Color.parseColor(color.getMenuItemDefaultColor()))
+                .apply();
     }
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.nikameru.skinjsoneditor">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission
         android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
@@ -21,12 +20,12 @@
         android:theme="@style/Theme.SkinJSONEditor.LaunchScreen"
         tools:targetApi="31">
         <activity
-            android:name=".CreateProjectActivity"
+            android:name=".ProjectActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".HomeActivity"
             android:theme="@style/Theme.SkinJSONEditor" />
         <activity
-            android:name=".MainActivity"
+            android:name=".HomeActivity"
             android:exported="true"
             android:theme="@style/Theme.SkinJSONEditor.LaunchScreen">
             <intent-filter>

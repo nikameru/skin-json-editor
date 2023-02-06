@@ -30,25 +30,25 @@ import java.net.URLDecoder;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class CreateProjectActivity extends AppCompatActivity implements
+public class ProjectActivity extends AppCompatActivity implements
         PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
-    final private static JSONAssembler assembler = new JSONAssembler();
+    final private static PreferencesConverter preferencesConverter = new PreferencesConverter();
     final private static Pattern[] regexHighlighting = {
-            Pattern.compile("\"[0-9a-zA-Z#]+\""),   // strings
+            Pattern.compile("\"[0-9a-zA-Z#]+\""),           // strings
             Pattern.compile("[^\"#:A-Z]+\\d[^\",}A-Z]+"),   // numbers
-            Pattern.compile("true|false")   // booleans
+            Pattern.compile("true|false")                   // booleans
     };
     final private static int[] highlightingColors = {
             Color.GREEN,
             Color.CYAN,
             Color.YELLOW
     };
-    protected String previewJSON;
+    protected String previewJson;
 
     public void showPreview(View view) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        previewJSON = assembler.getSkinPropertiesJSON(sharedPreferences);
+        previewJson = preferencesConverter.getSkinPropertiesJson(sharedPreferences);
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -60,7 +60,7 @@ public class CreateProjectActivity extends AppCompatActivity implements
         CodeView preview = findViewById(R.id.previewTextView);
 
         assert preview != null;
-        preview.setText(previewJSON);
+        preview.setText(previewJson);
 
         for (int i = 0; i < regexHighlighting.length; i++) {
             preview.addSyntaxPattern(regexHighlighting[i], highlightingColors[i]);
@@ -79,7 +79,7 @@ public class CreateProjectActivity extends AppCompatActivity implements
         }
     }
 
-    private void saveFile(String json, Uri filepath) {
+    private void saveJsonFile(String json, Uri filepath) {
         try {
             final String stringFilepath = getFilepath(String.valueOf(filepath));
 
@@ -99,6 +99,18 @@ public class CreateProjectActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        final Bundle actionExtras = getIntent().getExtras();
+        assert actionExtras != null;
+
+        String action = actionExtras.getString("action");
+
+        if (Objects.equals(action, "open")) {
+            final String json = actionExtras.getString("json");
+
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            preferencesConverter.setPreferencesFromJson(json, sharedPreferences);
+        }
 
         setContentView(R.layout.activity_create_project);
 
@@ -132,7 +144,7 @@ public class CreateProjectActivity extends AppCompatActivity implements
         if (menuItemId == R.id.action_save_project) {
             Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
             intent.addCategory(Intent.CATEGORY_DEFAULT);
-            startActivityForResult(Intent.createChooser(intent, "Choose save destination"), 1);
+            startActivityForResult(Intent.createChooser(intent, "Choose save destination"), 101);
 
             return true;
         } else if (menuItemId == R.id.action_project_save_as) {
@@ -146,21 +158,25 @@ public class CreateProjectActivity extends AppCompatActivity implements
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1) {
-            assert data != null;
-
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-            try {
-                final String configuredSkinProperties = assembler.getSkinPropertiesJSON(sharedPreferences);
-
-                saveFile(configuredSkinProperties, data.getData());
-            } catch (Exception e) {
-                e.printStackTrace();
-
+        if (requestCode == 101) {
+            if (data == null) {
                 Toast.makeText(
-                        this, "Error! You've inserted parameters with wrong data types!", Toast.LENGTH_LONG
+                        this, "Please choose save destination!", Toast.LENGTH_SHORT
                 ).show();
+            } else {
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+                try {
+                    final String configuredSkinProperties = preferencesConverter.getSkinPropertiesJson(sharedPreferences);
+
+                    saveJsonFile(configuredSkinProperties, data.getData());
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                    Toast.makeText(
+                            this, "Error! You've set parameters with wrong data types!", Toast.LENGTH_LONG
+                    ).show();
+                }
             }
         }
     }

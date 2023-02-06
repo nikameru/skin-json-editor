@@ -35,3 +35,4 @@ proguard_logs/
 .gradle/
 .externalNativeBuild/
 release.jks
+misc.xml
